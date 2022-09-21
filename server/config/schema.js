@@ -3,7 +3,6 @@
 const yup = require("yup");
 
 const pluginConfigSchema = yup.object({
-  fuseOptions: yup.object(),
   contentTypes: yup.array().of(
     yup.object({
       uid: yup.string().required(),
@@ -11,6 +10,7 @@ const pluginConfigSchema = yup.object({
       limit: yup.number(),
     })
   ),
+  minQueryLength: yup.number(),
 });
 
 module.exports = {

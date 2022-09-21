@@ -3,7 +3,11 @@ const { getPluginService } = require("../utils/getPluginService");
 
 module.exports = ({ strapi }) => ({
   async getResults(query, locale) {
-    const { contentTypes } = getPluginService(strapi, "settingsService").get();
+    const { contentTypes, minQueryLength } = getPluginService(strapi, "settingsService").get();
+
+    if (minQueryLength && query.trim().length < minQueryLength)
+      return [];
+
     const meilisearch = getPluginService(strapi, "meilisearch", "meilisearch");
     const indexes = await meilisearch.getIndexes()
       .then(indexes => indexes.reduce((t, v) => {

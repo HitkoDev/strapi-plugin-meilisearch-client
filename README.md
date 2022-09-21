@@ -24,7 +24,7 @@ In order to register serchable content types when Strapi starts, this plugin req
 | Key            | Type             | Notes                                                                                                                                    |
 | -------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | contentTypes\* | Array of Objects | List the content types you want to register. Each object requires the `uid: string` and `modelName: string` to be set for a content type |
-| limit          | int (positive)   | Limits the amount of entries returned from the search                                                                                    |
+| minQueryLength | int (positive)   | Requires query to have at least that many characters, otherwise returns no result                                                        |
 
 ### Full Example config
 
@@ -46,6 +46,7 @@ module.exports = ({ env }) => ({
           modelName: "book",
         },
       ],
+      minQueryLength: 3,
     },
   },
 
