@@ -1,0 +1,53 @@
+{
+  "name": "strapi-plugin-meilisearch-client",
+  "version": "0.0.0-development",
+  "description": "Register a Meilisearch endpoint for Strapi Headless CMS.",
+  "strapi": {
+    "displayName": "Meilisearch Client",
+    "name": "meilisearch-client",
+    "description": "Register a Meilisearch endpoint for Strapi Headless CMS.",
+    "kind": "plugin"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "tag": "latest"
+  },
+  "release": {
+    "branches": [
+      "master"
+    ]
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "@strapi/strapi": "^4.0.8",
+    "@strapi/utils": "^4.0.8",
+    "strapi-plugin-meilisearch": "^0.7.1",
+    "yup": "^0.32.9"
+  },
+  "author": "@HitkoDev (https://github.com/HitkoDev)",
+  "maintainers": [
+    "@HitkoDev (https://github.com/HitkoDev)"
+  ],
+  "engines": {
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT",
+  "main": "strapi-server.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HitkoDev/strapi-plugin-meilisearch-client.git"
+  },
+  "keywords": [
+    "strapi",
+    "meilisearch",
+    "search"
+  ],
+  "bugs": {
+    "url": "https://github.com/HitkoDev/strapi-plugin-meilisearch-client/issues"
+  },
+  "homepage": "https://github.com/HitkoDev/strapi-plugin-meilisearch-client#readme"
+}
