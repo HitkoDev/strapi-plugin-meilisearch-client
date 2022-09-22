@@ -12,21 +12,19 @@ const buildGraphqlResponse = async (searchResults, auth) => {
 
   // Map over results instead of using for each so promises can be resolved
   // and thus resultsResponse can be build properly
-  await Promise.all(
-    searchResults.map(async (res) => {
-      resultsResponse[res.pluralName] = toEntityResponseCollection(
-        res.hits.map(async (hit) => {
-          const sanitizedEntity = await sanitizeOutput(
-            hit,
-            res.contentType,
-            auth
-          );
+  searchResults.map((res) => {
+    resultsResponse[res.pluralName] = toEntityResponseCollection(
+      res.hits.map(async (hit) => {
+        const sanitizedEntity = await sanitizeOutput(
+          hit,
+          res.contentType,
+          auth
+        );
 
-          return sanitizedEntity;
-        })
-      );
-    })
-  );
+        return sanitizedEntity;
+      })
+    );
+  });
 
   return resultsResponse;
 };

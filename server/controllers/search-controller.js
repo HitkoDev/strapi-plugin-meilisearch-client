@@ -14,19 +14,19 @@ module.exports = ({ strapi }) => ({
     ).getResults(query, locale);
 
     const resultsResponse = {};
-  
+
     // Map over results instead of using for each so promises can be resolved
     // and thus resultsResponse can be build properly
     await Promise.all(
       searchResults.map(async (res) => {
-        resultsResponse[res.pluralName] = toEntityResponseCollection(
+        resultsResponse[res.pluralName] = await Promise.all(
           res.hits.map(async (hit) => {
             const sanitizedEntity = await sanitizeOutput(
               hit,
               res.contentType,
               auth
             );
-  
+
             return sanitizedEntity;
           })
         );
