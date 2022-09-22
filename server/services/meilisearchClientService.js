@@ -26,7 +26,8 @@ module.exports = ({ strapi }) => ({
         if (index) {
           hits = (await index.search(query, { limit })).hits;
         }
-        const ids = locale
+        const translated = !!contentType.model.pluginOptions?.i18n?.localized;
+        const ids = translated
           ? hits
             .map(h => h[locale]?._id)
             .filter(h => !!h)
